@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 15:44:05 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/21 16:34:07 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/22 14:04:15 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_main
     int len;
     int ret;
     char **res_str;
-    int b_is_empty;
+    int index;
 }              t_main;
 
 
