@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:12:36 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/22 16:32:52 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/23 16:48:47 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,9 @@ void	bubble_sort(t_main *arr)
 			tmp = arr->array[j];
 			arr->array[j] = arr->array[i];
 			arr->array[i] = tmp;
-			i++;
-			j++;
 		}
-		else
-		{
-			i++;
-			j++;
-		}
-		
+		i++;
+		j++;
 	}
 	if (!(is_bubble_sorted(arr)))
 		bubble_sort(arr);
@@ -43,17 +37,17 @@ void	bubble_sort(t_main *arr)
 		return ;
 }
 
-void	filling_array(t_main *arr, int m)
+void	filling_array(t_main *arr)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	if (!(arr->block_count_a[m]))
+	if (!(arr->block_count_a[0]))
 		arr->n = arr->num_a;
 	else
-		arr->n = arr->block_count_a[m];
+		arr->n = arr->block_count_a[0];
 	if (!(arr->array = malloc(sizeof(int) * (arr->n + 1))))
 		return ;
 	while (i < arr->n)
@@ -82,12 +76,12 @@ int		is_bubble_sorted(t_main *arr)
 		return (0);
 }
 
-void	mediana_finding_for_a(t_main *arr, int m)
+void	mediana_finding_for_a(t_main *arr)
 {
 	int i;
 	int mediana;
 
-	filling_array(arr, m);
+	filling_array(arr);
 	bubble_sort(arr);
 	i = arr->n / 2;
 	mediana = arr->array[i];

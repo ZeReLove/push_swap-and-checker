@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 15:44:05 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/22 14:04:15 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/23 17:24:50 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_main
     int ret;
     char **res_str;
     int index;
+    //int l;
+    //nt m;
 }              t_main;
 
 
@@ -62,31 +64,31 @@ void main_algorithm(t_main *arr);
 void sorting_three(t_main *arr);
 int is_sorted_for_a(t_main *arr);
 int is_sorted_for_b(t_main *arr);
-void mediana_rotating_for_a(t_main *arr, int m, int *z);
-void mediana_rotating_for_b(t_main *arr, int l, int *y);
+void mediana_rotating_for_a(t_main *arr, int *z);
+void mediana_rotating_for_b(t_main *arr, int *y);
 void bubble_sort(t_main *arr);
 int is_bubble_sorted(t_main *arr);
-void mediana_finding_for_a(t_main *arr, int l);
-void filling_array(t_main *arr, int m);
-void mediana_finding_for_b(t_main *arr, int l);
+void mediana_finding_for_a(t_main *arr);
+void filling_array(t_main *arr);
+void mediana_finding_for_b(t_main *arr);
 int is_bubble_sorted_for_b(t_main *arr);
-void filling_array_for_b(t_main *arr, int l);
+void filling_array_for_b(t_main *arr);
 void bubble_sort_for_b(t_main *arr);
 void sorting_three(t_main *arr);
-void sort_for_block_count(t_main *arr, int l, int m);
-int is_sorted_for_block_a(t_main *arr, int m);
-int is_sorted_for_block_b(t_main *arr, int l);
-void ft_sa_for_block_a(t_main *arr);
-void ft_sb_for_block_b(t_main *arr);
-void ft_rra_for_block_a(t_main *arr, int m);
-void ft_rrb_for_block_b(t_main *arr, int l);
-void swipe_block_count_b(t_main *arr, int l);
-void swipe_block_count_a(t_main *arr, int m);
+void sort_for_block_count(t_main *arr);
+int is_sorted_for_block_a(t_main *arr);
+int is_sorted_for_block_b(t_main *arr);
+void swipe_block_count_b(t_main *arr, int y);
+void swipe_block_count_a(t_main *arr, int z);
 void move_block_count_b(t_main *arr, int y);
 void move_block_count_a(t_main *arr, int z);
 void read_and_make_instructions(t_main *arr);
 void make_operations(t_main *arr, char *line);
 int is_sorted(t_main *arr);
 void	put_error(char *line);
+void case_one(t_main *arr, int *y, int z);
+void case_two(t_main *arr, int y, int *z);
+void case_three(t_main *arr, int y);
+//void algorithm(t_main *arr, int *z, int *y);
 
 #endif

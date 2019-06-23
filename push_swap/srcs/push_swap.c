@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 16:03:01 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/22 17:16:15 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/23 15:58:54 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int main(int argc, char **argv)
             main_algorithm(&arr);
             //printf("-----------\n");
             //i = 0;
-            i = 0;
-            if (is_sorted_for_a(&arr))
-            {
-                while (i < arr.num)
-                    printf("%d\n",  arr.stack_a[i++]);
-            }
+            // i = 0;
+            // if (is_sorted_for_a(&arr))
+            // {
+            //     while (i < arr.num)
+            //         printf("%d\n",  arr.stack_a[i++]);
+            // }
 
             i = -1;
 //            if (arr.ret)
