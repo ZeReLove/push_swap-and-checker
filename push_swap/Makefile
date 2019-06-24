@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/06/22 13:36:58 by mrolfe            #+#    #+#              #
+#    Updated: 2019/06/24 18:11:05 by mrolfe           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CHECKER = checker
 PUSH_SWAP = push_swap
 
@@ -12,7 +24,11 @@ CH_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(CH_FILES)))
 CH_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(CH_FILES)))
 
 PS_FILES = 	sorting		push_swap 	mediana_functions_for_a \
-			mediana_functions_for_b 
+			mediana_functions_for_b		block_functions \
+			is_sorted_functions		mediana_rotating_for_a \
+			mediana_rotating_for_b		sort_for_block_count \
+			sorting_functions		sorting_functions2 \
+			sorting_three_functions
 PS_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(PS_FILES)))
 PS_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(PS_FILES)))
 

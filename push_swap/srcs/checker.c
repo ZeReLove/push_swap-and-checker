@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 16:48:44 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/22 17:13:35 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/24 18:24:07 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		main(int argc, char **argv)
 {
 	t_main	arr;
 	char	**str;
+	int		i;
 
 	arr.index = 0;
 	ft_bzero(&arr, sizeof(arr));
@@ -29,6 +30,15 @@ int		main(int argc, char **argv)
 		printf("KO-2\n");
 	if (is_sorted(&arr) == 0)
 		printf("ko\n");
+	free(arr.stack_a);
+	free(arr.stack_b);
+	i = -1;
+	if (arr.ret)
+	{
+		while (str[++i])
+			free((char *)str[i]);
+		free((char **)str);
+	}
 }
 
 void	read_and_make_instructions(t_main *arr)
@@ -37,10 +47,7 @@ void	read_and_make_instructions(t_main *arr)
 
 	line = NULL;
 	while (get_next_line(0, &line))
-	{
 		make_operations(arr, line);
-  //    free(line);
-	}
 }
 
 void	make_operations(t_main *arr, char *line)
@@ -66,21 +73,17 @@ void	make_operations(t_main *arr, char *line)
 	else if (ft_strequ(line, "pb"))
 		ft_pb(arr);
 	else
-	{
-		write(1, "Error\n", 6);
-		free(line);
-		exit(1);
-	}
-		
+		put_error(line);
 	free(line);
 	line = NULL;
 }
 
-// void	put_error(char *line)
-// {
-	
-// 	
-// }
+void	put_error(char *line)
+{
+	write(1, "Error\n", 6);
+	free(line);
+	exit(1);
+}
 
 int		is_sorted(t_main *arr)
 {
