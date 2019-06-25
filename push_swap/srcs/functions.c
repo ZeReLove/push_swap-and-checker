@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 17:26:19 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/22 16:23:30 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/25 17:37:11 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@ void	ft_sa(t_main *arr)
 	int j;
 	int tmp;
 
-	i = arr->stack_a[0];
-	j = arr->stack_a[1];
-	tmp = i;
-	arr->stack_a[0] = j;
-	arr->stack_a[1] = tmp;
+	if (arr->num_a != 0)
+	{
+		i = arr->stack_a[0];
+		j = arr->stack_a[1];
+		tmp = i;
+		arr->stack_a[0] = j;
+		arr->stack_a[1] = tmp;
+	}
 	if (arr->index == 1)
 		printf("sa\n");
 }
@@ -33,19 +36,25 @@ void	ft_sb(t_main *arr)
 	int j;
 	int tmp;
 
-	i = arr->stack_b[0];
-	j = arr->stack_b[1];
-	tmp = i;
-	arr->stack_b[0] = j;
-	arr->stack_b[1] = tmp;
+	if (arr->num_b != 0)
+	{
+		i = arr->stack_b[0];
+		j = arr->stack_b[1];
+		tmp = i;
+		arr->stack_b[0] = j;
+		arr->stack_b[1] = tmp;
+	}
 	if (arr->index == 1)
 		printf("sb\n");
 }
 
 void	ft_ss(t_main *arr)
 {
-	ft_sa(arr);
-	ft_sb(arr);
+	if (arr->num_a != 0 && arr->num_b != 0)
+	{
+		ft_sa(arr);
+		ft_sb(arr);
+	}
 	if (arr->index == 1)
 		printf("ss\n");
 }
@@ -55,6 +64,8 @@ void	ft_pa(t_main *arr)
 	int i;
 	int tmp;
 
+	if (arr->num_b == 0)
+		return ;
 	i = arr->num_a - 1;
 	arr->num_a++;
 	tmp = arr->stack_b[0];
@@ -80,6 +91,8 @@ void	ft_pb(t_main *arr)
 	int i;
 	int tmp;
 
+	if (arr->num_a == 0)
+		return ;
 	i = arr->num_b - 1;
 	arr->num_b++;
 	tmp = arr->stack_a[0];

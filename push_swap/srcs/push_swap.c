@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 16:03:01 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/24 18:59:18 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/25 16:47:40 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int		main(int argc, char **argv)
 	t_main	arr;
 	char	**str;
 
-	str = arr.res_str;
+	ft_bzero(&arr, sizeof(arr));
 	if (argc > 1)
 	{
 		arr.index = 1;
 		fill_struct(&arr, &argc, argv);
-		if (check_all(&arr, argc, argv))
+		str = arr.res_str;
+		if (check_all(&arr, argc, argv, str))
 		{
 			main_algorithm(&arr);
 			free_for_main(&arr);

@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 17:09:22 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/24 19:04:23 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/25 18:27:28 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,17 @@ int		ft_atoi_push_swap(char *str)
 			|| str[i] == '\n' || str[i] == '\f')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			sign = -1;
+		(str[i++] == '-') ? sign = -1 : 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nbr = (nbr * 10) + (str[i++] - '0');
 		j++;
 	}
 	if (j > 11 || nbr > 2147483647 || nbr < -2147483648)
-		return (0);                                        //!!!!!!!!!!!!
+	{
+		write(1, "Error\n", 6);
+		exit(1);
+	}
 	return (nbr * sign);
 }
 
@@ -65,7 +67,7 @@ void	fill_struct_for_brakets(t_main *arr, int *argc, char **argv)
 	s = ft_strsplit(argv[1], ' ');
 	while (s[arr->len])
 		arr->len++;
-	str = (char **)malloc(sizeof(char *) * (arr->len + 2));
+	str = (char **)ft_memalloc(sizeof(char *) * (arr->len + 2));
 	str[0] = ft_strdup(argv[0]);
 	i = 1;
 	while (s[i])
@@ -73,12 +75,11 @@ void	fill_struct_for_brakets(t_main *arr, int *argc, char **argv)
 		str[i] = ft_strdup(s[i - 1]);
 		i++;
 	}
-	str[arr->len + 1] = NULL;
 	*argc = arr->len + 1;
 	common_for_fill_functions(arr, *argc);
 	fill_struct_for_brakets2(arr, s);
 	arr->num_a = arr->len;
-	arr->res_str = s;
+	arr->res_str = str;
 }
 
 void	fill_struct_for_brakets2(t_main *arr, char **s)

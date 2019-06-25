@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 17:55:23 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/24 18:42:28 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/25 16:32:54 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 void	sort_for_block_count(t_main *arr)
 {
-	int i;
-
-	i = 0;
 	if (arr->block_count_a[0] == 3 && !(is_sorted_for_block_a(arr)))
 		sort_for_block_count1(arr);
 	if (arr->block_count_a[0] == 2 && !(is_sorted_for_block_a(arr)))
 		ft_sa(arr);
-	i = 0;
 	if (arr->block_count_b[0] == 3 && !(is_sorted_for_block_b(arr)))
 		sort_for_block_count2(arr);
 	if (arr->block_count_b[0] == 2 && !(is_sorted_for_block_b(arr)))

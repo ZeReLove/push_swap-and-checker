@@ -6,7 +6,7 @@
 /*   By: mrolfe <mrolfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 16:48:44 by mrolfe            #+#    #+#             */
-/*   Updated: 2019/06/24 18:24:07 by mrolfe           ###   ########.fr       */
+/*   Updated: 2019/06/25 18:36:13 by mrolfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@ int		main(int argc, char **argv)
 	char	**str;
 	int		i;
 
-	arr.index = 0;
 	ft_bzero(&arr, sizeof(arr));
 	fill_struct(&arr, &argc, argv);
 	str = arr.res_str;
 	if (check_all(&arr, argc, argv, str))
+	{
 		read_and_make_instructions(&arr);
-	if (is_sorted(&arr) == 1)
-		printf("OK\n");
-	if (is_sorted(&arr) == 2)
-		printf("KO-2\n");
-	if (is_sorted(&arr) == 0)
-		printf("ko\n");
+		if (is_sorted(&arr) == 1)
+			printf("OK\n");
+		if (is_sorted(&arr) == 0)
+			printf("KO\n");
+	}
 	free(arr.stack_a);
 	free(arr.stack_b);
 	i = -1;
@@ -47,15 +46,24 @@ void	read_and_make_instructions(t_main *arr)
 
 	line = NULL;
 	while (get_next_line(0, &line))
-		make_operations(arr, line);
+	{
+		if (ft_strequ(line, "sa"))
+		{
+			ft_sa(arr);
+			free(line);
+			line = NULL;
+		}
+		else
+			make_operations(arr, line);
+	}
 }
 
 void	make_operations(t_main *arr, char *line)
 {
-	if (ft_strequ(line, "sa"))
-		ft_sa(arr);
-	else if (ft_strequ(line, "sb"))
+	if (ft_strequ(line, "sb"))
 		ft_sb(arr);
+	else if (ft_strequ(line, "ss"))
+		ft_ss(arr);
 	else if (ft_strequ(line, "ra"))
 		ft_ra(arr);
 	else if (ft_strequ(line, "rb"))
@@ -97,7 +105,7 @@ int		is_sorted(t_main *arr)
 		if (arr->stack_a[i] < arr->stack_a[i + 1])
 			i++;
 		else
-			return (2);
+			return (0);
 	}
 	ret1 = (i == arr->num_a - 1) ? 1 : 0;
 	ret2 = (!arr->num_b) ? 1 : 0;
